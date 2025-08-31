@@ -1,0 +1,362 @@
+[
+  {
+    "id": 101,
+    "file_path": "/root/openset/dataset/flat_out/airfield__airplane_001.jpg",
+    "width": 256,
+    "height": 256,
+    "annotations": [
+      {
+        "id": 599,
+        "image_id": 101,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "ih[17i72N1O1O1O1O1O100O1O001O01O010O010O0a0_O5K3M2N0OK5E<K41O10O02N1O100O1O]OoH9P7GQI9n6GTI8k6HXI6h6I\\I3d6M]I2c6M`I3_6LdI3[6MfI2[6KhI5R70O1O3L2O1N1OJ7M201N2O1O1Nkn5"
+        },
+        "bbox": [
+          175,
+          15,
+          57,
+          57
+        ],
+        "area": 1051,
+        "score": 0.9087193012237549
+      },
+      {
+        "id": 600,
+        "image_id": 101,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "je13m72M3N2N1O2N10O01O1O010O1O010O010O010O010\\IDb5<[JHe5=SJECKP6a0mIB2?Q68nIJS6P12M2N2N3M2O1NKhNgIU1Y6mNfIR1[6oNdIP1^682L4N1O2N1MYInNf6o06001N2N3M2N2N]O]INa6i0N[ObIM\\64eIKY63eIYO5d0S65QJIn55UJLj52[JKe5GmI0a09a5DQJ1`0;l5@YJ`0c6010O01O010O10O001000O02O0O010O2QI@Z6b0cI_O\\6f0[I_Od6o0O0OUO_I:`6GcI5^6JeI3\\6LhI0Z6MiI2Y6KgI5[6IfI5T7M4N2LiPX1"
+        },
+        "bbox": [
+          6,
+          167,
+          89,
+          89
+        ],
+        "area": 2497,
+        "score": 0.8457807898521423
+      },
+      {
+        "id": 601,
+        "image_id": 101,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "QS<6j72N1O1O2N1O1O001O10O01O010O01O01O010O010O016TI_Ok5k0hIYOOIo5n0oI]OLLT6f0lILT6P11N1M3N3MIaNkIO4^1S6gNkIW1V68003M4K3N3N1000OK[IQOc6n0aIQO^6o0dIoN[6S173M2N2N2N3N1NZOhIIU66nIJQ65RJKm5DlI3;7i5DnI2>8P6DUJ<k5AWJ?f60O010O01O010O010O010O001000O100O1O2RI]OZ6g0_I_O^6R1O1N2NUOaI7`6HbI7^6GgI4[6KgI3[6JhI4[6IfI6]6FfI7S7N3Lfcm0"
+        },
+        "bbox": [
+          48,
+          76,
+          89,
+          89
+        ],
+        "area": 2583,
+        "score": 0.7962466478347778
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "file_path": "/root/openset/dataset/flat_out/airfield__airplane_002.jpg",
+    "width": 256,
+    "height": 256,
+    "annotations": [
+      {
+        "id": 602,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "Pk32n7001O0000001O0WH1_7:M2L4O1NM5M7A]H122i7000001N10oTg1"
+        },
+        "bbox": [
+          15,
+          85,
+          20,
+          24
+        ],
+        "area": 162,
+        "score": 0.7832837104797363
+      },
+      {
+        "id": 603,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "Yk=8e74E:N2O2M10K6K7I]m_1"
+        },
+        "bbox": [
+          55,
+          86,
+          9,
+          29
+        ],
+        "area": 168,
+        "score": 0.7678365111351013
+      },
+      {
+        "id": 604,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "c[o03a71`H9V7=J5N11H8I8E`en0"
+        },
+        "bbox": [
+          125,
+          89,
+          8,
+          33
+        ],
+        "area": 156,
+        "score": 0.7609320878982544
+      },
+      {
+        "id": 605,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "QQX12n71O1\\HNY72fHOY72eHN\\72dHO\\71aH0`71_HO2Ll63ZI9HIk60UIe0k6:O0O0001O0K6L3YORI4LMS7MRI4M0P7LSI3O0X7OjH1U7OlH0S71mH0R7OPI1o6NSI1n6MSI3BMj79VHGd7:1O0K[HLRf`0"
+        },
+        "bbox": [
+          160,
+          21,
+          30,
+          43
+        ],
+        "area": 485,
+        "score": 0.7301838994026184
+      },
+      {
+        "id": 606,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "TY<7b78J6I5O20OBVOhIc0o6H7Je_a1"
+        },
+        "bbox": [
+          49,
+          1,
+          9,
+          44
+        ],
+        "area": 163,
+        "score": 0.709933876991272
+      },
+      {
+        "id": 607,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "oPP12n71O010O1O102]OJUI`0a6ETIc0l680000001O0FUI_Ok66TIK3Nj61XI1NOj6NXI21Og6NYI300R70oH0P7OQI1o6OQI1o6ORI1m6NTI8f6HZI9W7O01OO1Kcfh0"
+        },
+        "bbox": [
+          128,
+          16,
+          29,
+          46
+        ],
+        "area": 434,
+        "score": 0.7068850994110107
+      },
+      {
+        "id": 608,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "WQb0110k70UH2k7NUH1k73O010O0001000O010O0VHNg79L10O0M4Kf^Y1"
+        },
+        "bbox": [
+          72,
+          38,
+          18,
+          19
+        ],
+        "area": 112,
+        "score": 0.6726067066192627
+      },
+      {
+        "id": 609,
+        "image_id": 102,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "ebd01?0`71O0O10O11BNlH2a7OFOfH2d70WHNd73\\HM01\\7OaH>Y7BgHc0V75O1NNmH[OS7?;M<G0O1O010O1O010OilT1"
+        },
+        "bbox": [
+          82,
+          85,
+          26,
+          30
+        ],
+        "area": 217,
+        "score": 0.6135525107383728
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "file_path": "/root/openset/dataset/flat_out/airfield__airplane_003.jpg",
+    "width": 256,
+    "height": 256,
+    "annotations": [
+      {
+        "id": 610,
+        "image_id": 103,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "n251Lg74YHLh77OOYHJg7702fHKe67UIMl60mH9T791O1N2O1M200O0O2@eH9]7FaH00:`7G`H8b72NI`HL0101^7NbH20004]7JcH000020N0003^7MbH20N000004]74eHM[72cHI06]72cH0\\7;O002N[OgH20=X771ZOgH00`0[7@eHb0]70O1O000000000jN^OoJa0Q5@mJ`0T5@lJ;Z5EeJ:\\5GcJ:]5FbJ9_5H`J8`5J^J6c5K[J5e5LZJ4f5NXJ2i5OUJ1l50RJ0o51oIOa0D\\4?bJA00009<h0D_4a0`J_O008<h0F`4=`JA0040L01<n0Fc4`0gJId0Jg4?aJIa0Mo4;^JH>3_OBb5R1lJDU5;gJH[5^11N2O1O1N3M2L4M3M3M4L3M3oN]Ia0f694M3M3M4L3BiHOY7:2O002N001O1O1N200000000000000000O11O0O02O00O10000000000000000000000000000000000000O11OO100001O00000O11OO10001O000O2O00001O0O2N101Nolj0"
+        },
+        "bbox": [
+          0,
+          58,
+          148,
+          91
+        ],
+        "area": 3168,
+        "score": 0.8052790760993958
+      },
+      {
+        "id": 611,
+        "image_id": 103,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "Zl>1f70>0mG041h71K5JJ_H9o6F[Ic0b6`0O1OO1M2O2N2O1M3N2N2M3N2N2N2N2N2N2O1N2O100OelY1"
+        },
+        "bbox": [
+          59,
+          108,
+          29,
+          38
+        ],
+        "area": 465,
+        "score": 0.736221194267273
+      },
+      {
+        "id": 612,
+        "image_id": 103,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "nWa11o7000P`70P`H0J0XH4g73O20O1ON200OG\\H8e71O11OO10O11O00000000000O11OO1000O]H"
+        },
+        "bbox": [
+          196,
+          244,
+          60,
+          12
+        ],
+        "area": 263,
+        "score": 0.6898698806762695
+      },
+      {
+        "id": 613,
+        "image_id": 103,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "ieR17h71N4M1OO0200O1O1N20000001EbH1c7Ihbi0"
+        },
+        "bbox": [
+          138,
+          174,
+          15,
+          20
+        ],
+        "area": 199,
+        "score": 0.6622512340545654
+      },
+      {
+        "id": 614,
+        "image_id": 103,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": {
+          "size": [
+            256,
+            256
+          ],
+          "counts": "cSh1170_70`H0a70ZH0m70XH0K0e718O0020K2VHOi74N22NM3OI\\H4e71ZHJe79N200O10O11N100WICo5<j02OO11N110N10000lL"
+        },
+        "bbox": [
+          224,
+          100,
+          32,
+          42
+        ],
+        "area": 305,
+        "score": 0.2782520353794098
+      }
+    ]
+  }
+]

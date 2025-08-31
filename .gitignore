@@ -1,0 +1,9 @@
+# 忽略 dataset 文件夹
+dataset/
+dataset_processed/output_json/renamed_output_images_annotations.json
+dataset_processed/output_json/output_images_annotations.json
+
+# 其他可能不需要推送的临时文件
+*.pyc
+__pycache__/
+.DS_Storedataset_processed/output_json/*.json
