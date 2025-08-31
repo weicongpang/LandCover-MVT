@@ -31,7 +31,7 @@ pip install .
 
 ### Step 1: Prepare Dataset
 
-Please first download dataset from https://huggingface.co/datasets/CSYYY/image, and create dataset folder under the repo root folder. 
+Please first download dataset from https://huggingface.co/datasets/CSYYY/image, and **create dataset folder under the repo root folder**. 
 Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
 
 Navigate to dataset processing scripts and execute them one by one (first combine.py, then rename.py, finally process_json.py):
