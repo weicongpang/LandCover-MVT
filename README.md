@@ -1,4 +1,4 @@
-# Open-set Remote Sensing Image Tagging using Qwen-VL
+# Openset Remote Sensing Image Tagging 
 
 This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.
 
