@@ -10,7 +10,7 @@ This repository provides a simple pipeline to perform open-set image tagging on 
 
 ```bash
 # Clone the repository
-git clone https://github.com/weicongpang/openset_remotesensing_tagging.git
+git clone https://github.com/XXX/openset_remotesensing_tagging.git
 cd openset
 
 # Create conda environment
