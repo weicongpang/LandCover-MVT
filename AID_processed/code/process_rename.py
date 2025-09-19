@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
 import re
 import json
 import shutil
@@ -8,9 +7,9 @@ from pathlib import Path
 from typing import List
 
 # ---- I/O paths ----
-ORIGINAL_PATH = "/root/openset/dataset/AID"              # AID/<class_name>/*
-FLAT_DIR      = "/root/openset/dataset/AID_0909"     # single folder: dataset_0909/image_00001.jpg ...
-INDEX_JSON    = "/root/openset/dataset/AID_0909/aid_label_index.json"
+ORIGINAL_PATH = Path("path/to/source_dataset")             # e.g. AID/<class_name>/*
+FLAT_DIR      = Path("path/to/flattened_dataset")          # e.g. dataset_flat/image_00001.jpg
+INDEX_JSON    = FLAT_DIR / "aid_label_index.json"
 
 # Acceptable image extensions
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
@@ -32,12 +31,12 @@ def list_images(dir_path: Path) -> List[Path]:
     return files
 
 def main():
-    src = Path(ORIGINAL_PATH)
+    src = ORIGINAL_PATH
     if not src.exists():
         raise FileNotFoundError(f"Original path not found: {ORIGINAL_PATH}")
 
     # recreate flat dir
-    flat = Path(FLAT_DIR)
+    flat = FLAT_DIR
     if flat.exists():
         print(f"[WARN] {FLAT_DIR} exists. Deleting and recreating ...")
         shutil.rmtree(flat)
@@ -57,7 +56,7 @@ def main():
     # flatten with global running index; also build label index list
     global_idx = 0
     total_copied = 0
-    index_list = []  # each: {"file": "<abs_path>", "label": "<1..30>"}
+    index_list = []  # each: {"file": "<path>", "label": "<1..30>"}
 
     for cname in CATEGORY_ORDER:
         if cname not in mapping:
@@ -69,9 +68,9 @@ def main():
             global_idx += 1
             new_name = f"image_{global_idx:05d}{img.suffix.lower()}"
             dst_path = flat / new_name
-            shutil.copy2(str(img), str(dst_path))
+            shutil.copy2(img, dst_path)
             index_list.append({
-                "file": str(dst_path.resolve()),
+                "file": str(dst_path),
                 "label": str(label_id),
                 "orig_class": cname,
                 "orig_name": img.name

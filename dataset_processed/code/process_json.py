@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 import json
-import os
 import random
+from pathlib import Path
 from typing import Any, Dict, List
 
 # Input paths
-INPUT_JSON = "/root/openset/dataset_processed/output_json/renamed_output_images_annotation.json"
-IMAGE_CATEGORY_MAPPING_JSON = "/root/openset/dataset/renamed_final/image_category_mapping.json"
+INPUT_JSON = Path("path/to/renamed_output_images_annotation.json")
+IMAGE_CATEGORY_MAPPING_JSON = Path("path/to/image_category_mapping.json")
 
 # Output paths
-OUTPUT_DIR = "/root/openset/llama_factory/LLaMA-Factory/data"
+OUTPUT_DIR = Path("path/to/output_dir")
 DATASET_FILE = "rs_open_tag_infer_new.jsonl"
 
 INCLUDE_RLE = True
 MIN_SCORE_HINT = 0.30
 
-def load_json(path: str) -> List[Dict[str, Any]]:
-    with open(path, "r", encoding="utf-8") as f:
+def load_json(path: Path) -> List[Dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
 def build_instruction() -> str:
@@ -114,9 +114,9 @@ def convert_to_alpaca(
 
     return outputs
 
-def save_jsonl(rows: List[Dict[str, Any]], path: str) -> None:
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+def save_jsonl(rows: List[Dict[str, Any]], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
@@ -134,8 +134,8 @@ def main():
     random.shuffle(samples)
     print(f"[SHUFFLE] Shuffled {len(samples)} samples.")
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    out_path = os.path.join(OUTPUT_DIR, DATASET_FILE)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = OUTPUT_DIR / DATASET_FILE
     save_jsonl(samples, out_path)
 
     print(f"[SAVE] Dataset successfully written to: {out_path}")

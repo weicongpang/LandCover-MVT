@@ -1,7 +1,7 @@
 [
   {
     "id": 101,
-    "file_path": "/root/openset/dataset/flat_out_renamed/image00.jpg",
+    "file_path": "path/to/flat_out_renamed/image00.jpg",
     "width": 256,
     "height": 256,
     "annotations": [
@@ -72,7 +72,7 @@
   },
   {
     "id": 102,
-    "file_path": "/root/openset/dataset/flat_out_renamed/image01.jpg",
+    "file_path": "path/to/flat_out_renamed/image01.jpg",
     "width": 256,
     "height": 256,
     "annotations": [
@@ -248,7 +248,7 @@
   },
   {
     "id": 103,
-    "file_path": "/root/openset/dataset/flat_out_renamed/image02.jpg",
+    "file_path": "path/to/flat_out_renamed/image02.jpg",
     "width": 256,
     "height": 256,
     "annotations": [

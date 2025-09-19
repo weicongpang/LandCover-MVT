@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-import os
 import json
+from pathlib import Path
 from typing import Any, Dict, List
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 # ======== 可按需修改 ========
-INPUT_JSON = "/root/openset/dataset_processed/final_annotations.json"
-OUTPUT_DIR = "/root/openset/dataset_processed/visualize_folder"
+INPUT_JSON = Path("path/to/final_annotations.json")
+OUTPUT_DIR = Path("path/to/visualize_folder")
 ALPHA = 0.55                   # 透明度↑ 更“深”
 DRAW_ID = True                 # 是否在实例中心写 id
 BASE_FONT_SIZE = 9             # 目标字号（DejaVu/Arial 找不到则回退默认字号）
@@ -34,12 +34,12 @@ except Exception as e:
     raise RuntimeError("缺少 pycocotools，请先：pip install pycocotools\n" + str(e))
 
 
-def ensure_dir(p: str) -> None:
-    os.makedirs(p, exist_ok=True)
+def ensure_dir(p: Path) -> None:
+    p.mkdir(parents=True, exist_ok=True)
 
 
-def load_items(path: str) -> List[Dict[str, Any]]:
-    with open(path, "r", encoding="utf-8") as f:
+def load_items(path: Path) -> List[Dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -79,10 +79,11 @@ def _load_font(target_size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont
         "DejaVuSans.ttf",
         "Arial.ttf",
     ]
-    for p in candidates:
-        if os.path.exists(p):
+    for candidate in candidates:
+        candidate_path = Path(candidate)
+        if candidate_path.exists():
             try:
-                return ImageFont.truetype(p, size=target_size)
+                return ImageFont.truetype(str(candidate_path), size=target_size)
             except Exception:
                 pass
     return ImageFont.load_default()  # 退回默认（字号不可控，通常≈10px）
@@ -117,8 +118,8 @@ def draw_segment_id(img: Image.Image, mask: np.ndarray, seg_id: int) -> Image.Im
     return img
 
 
-def visualize_item(item: Dict[str, Any], out_dir: str, alpha: float = ALPHA) -> str:
-    img_path = item["file_path"]
+def visualize_item(item: Dict[str, Any], out_dir: Path, alpha: float = ALPHA) -> str:
+    img_path = Path(item["file_path"])
     img = Image.open(img_path).convert("RGB")
     anns = item.get("annotations", [])
 
@@ -131,10 +132,10 @@ def visualize_item(item: Dict[str, Any], out_dir: str, alpha: float = ALPHA) -> 
         img = overlay_mask_on_image(img, mask, color=color, alpha=alpha)
         img = draw_segment_id(img, mask, seg_id=int(ann.get("id", k + 1)))
 
-    base = os.path.splitext(os.path.basename(img_path))[0]
-    save_path = os.path.join(out_dir, f"{base}_vis.jpg")
-    img.save(save_path, format="JPEG", quality=95)
-    return save_path
+    base = img_path.stem
+    save_path = out_dir / f"{base}_vis.jpg"
+    img.save(str(save_path), format="JPEG", quality=95)
+    return str(save_path)
 
 
 def main():

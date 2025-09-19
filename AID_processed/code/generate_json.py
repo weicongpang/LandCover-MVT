@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
 import re
 import json
 import random
@@ -25,15 +24,14 @@ if len(re.findall(r"<image>", PROMPT)) != 1:
     raise ValueError("PROMPT must contain exactly 1 <image> tag!")
 
 # ---- I/O ----
-INDEX_JSON   = "/root/openset/dataset/AID_0909/aid_label_index.json"   # produced by process_rename.py
-OUTPUT_JSON  = "/root/openset/llama_factory/LLaMA-Factory/data/0909AID_dataset.jsonl"
+INDEX_JSON = Path("path/to/aid_label_index.json")  # produced by process_rename.py
+OUTPUT_JSON = Path("path/to/0909AID_dataset.jsonl")
 RANDOM_SEED  = 20250909  # set None for fully random order
 
-def load_index(index_path: str) -> List[Dict]:
-    p = Path(index_path)
-    if not p.exists():
+def load_index(index_path: Path) -> List[Dict]:
+    if not index_path.exists():
         raise FileNotFoundError(f"Index JSON not found: {index_path}")
-    data = json.loads(Path(index_path).read_text(encoding="utf-8"))
+    data = json.loads(index_path.read_text(encoding="utf-8"))
     if isinstance(data, dict) and "samples" in data:
         samples = data["samples"]
     elif isinstance(data, list):
@@ -46,8 +44,12 @@ def load_index(index_path: str) -> List[Dict]:
     for it in samples:
         fp = it.get("file", "")
         lb = it.get("label", "")
-        if fp and lb and Path(fp).exists():
-            kept.append({"file": str(Path(fp).resolve()), "label": str(lb)})
+        if not fp or not lb:
+            continue
+        fp_path = Path(fp)
+        resolved_fp = fp_path if fp_path.is_absolute() else (index_path.parent / fp_path)
+        if resolved_fp.exists():
+            kept.append({"file": str(fp_path), "label": str(lb)})
     if not kept:
         raise RuntimeError("No valid (file, label) pairs found in index.")
     return kept
@@ -74,10 +76,9 @@ def build_records(pairs: List[Dict]) -> List[dict]:
         records.append(rec)
     return records
 
-def save_json(records: List[dict], out_json: str):
-    out_dir = Path(out_json).parent
-    out_dir.mkdir(parents=True, exist_ok=True)
-    with open(out_json, "w", encoding="utf-8") as f:
+def save_json(records: List[dict], out_json: Path):
+    out_json.parent.mkdir(parents=True, exist_ok=True)
+    with out_json.open("w", encoding="utf-8") as f:
         for rec in records:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     print(f"[OK] Wrote {len(records)} samples to {out_json}")

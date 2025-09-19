@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 import json
-import os
+from pathlib import Path
 from typing import Dict, List, Any
 
-INPUT_JSON = "/root/openset/dataset/instance_object_only.json"          # Modify to your own instance_object_only.json path
-IMG_BASE_DIR = "/root/openset/dataset/flat_out"                         # Modify to your own flat_out image directory
-OUTPUT_JSON = "/root/openset/dataset_processed/output_json/output_images_annotations.json"    # Modify to your own output path of this file
+INPUT_JSON = Path("path/to/instance_object_only.json")  # update to your input JSON path
+IMG_BASE_DIR = Path("path/to/flat_out")                 # update to your flattened image directory
+OUTPUT_JSON = Path("path/to/output_images_annotations.json")  # update to your desired output file path
 
 
-def load_input_json(path: str) -> Dict[str, Any]:
-    with open(path, "r", encoding="utf-8") as f:
+def load_input_json(path: Path) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -22,12 +22,12 @@ def build_ann_index(annotations: List[Dict[str, Any]]) -> Dict[int, List[Dict[st
     return idx
 
 
-def to_file_path(file_name: str, base_dir: str) -> str:
-    """Convert file_name to full file_path by joining with base_dir. """
-    return os.path.join(base_dir, file_name)
+def to_file_path(file_name: str, base_dir: Path) -> str:
+    """Convert file_name to full file_path by joining with base_dir."""
+    return str(base_dir / file_name)
 
 
-def merge_images_and_annotations(data: Dict[str, Any], base_dir: str) -> List[Dict[str, Any]]:
+def merge_images_and_annotations(data: Dict[str, Any], base_dir: Path) -> List[Dict[str, Any]]:
     """核心合并：对每个 image, 挂上它的 annotations, 并把 file_name -> file_path。"""
     images = data.get("images", [])
     annotations = data.get("annotations", [])
@@ -49,9 +49,9 @@ def merge_images_and_annotations(data: Dict[str, Any], base_dir: str) -> List[Di
     return merged
 
 
-def save_json(obj: Any, path: str) -> None:
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+def save_json(obj: Any, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
 

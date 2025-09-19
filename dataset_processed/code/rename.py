@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 import json
-import os
 import re
 import shutil
-from typing import List, Dict, Any
 from collections import defaultdict
+from pathlib import Path
+from typing import List, Dict, Any
 
-INPUT_JSON = "/root/openset/dataset_processed/output_json/output_images_annotations.json"
-RENAMED_FINAL_DIR = "/root/openset/dataset/renamed_final"
-OUTPUT_JSON = "/root/openset/dataset_processed/output_json/renamed_output_images_annotation.json"
-IMAGE_CATEGORY_MAPPING_JSON = os.path.join(RENAMED_FINAL_DIR, "image_category_mapping.json")
+INPUT_JSON = Path("path/to/output_images_annotations.json")
+RENAMED_FINAL_DIR = Path("path/to/renamed_final")
+OUTPUT_JSON = Path("path/to/renamed_output_images_annotation.json")
+IMAGE_CATEGORY_MAPPING_JSON = RENAMED_FINAL_DIR / "image_category_mapping.json"
 
 CATEGORY_PREFIX = "category"
 IMAGE_PREFIX = "image"
@@ -32,13 +32,13 @@ ALIAS_MAP = {
     "circular_farm_land": "circular_farmland",
 }
 
-def load_json(path: str) -> List[Dict[str, Any]]:
-    with open(path, "r", encoding="utf-8") as f:
+def load_json(path: Path) -> List[Dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_json(obj: Any, path: str) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+def save_json(obj: Any, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
 def normalize_label(s: str) -> str:
@@ -52,8 +52,8 @@ def cleanup_suffix(s: str) -> str:
     return s
 
 def parse_category(file_path: str) -> str:
-    base = os.path.basename(file_path)
-    name, _ = os.path.splitext(base)
+    base = Path(file_path).name
+    name = Path(base).stem
     if "__" not in name:
         raise ValueError(f"No '__' in filename: {base}")
     prefix, raw_suffix = name.split("__", 1)
@@ -65,8 +65,8 @@ def parse_category(file_path: str) -> str:
 def digits(n: int, min_width: int = 6) -> int:
     return max(min_width, len(str(n)))
 
-def copy_file(src: str, dst: str):
-    os.makedirs(os.path.dirname(dst), exist_ok=True)
+def copy_file(src: Path, dst: Path):
+    dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(src, dst)
 
 def main():
@@ -90,29 +90,29 @@ def main():
     image_counter = 1
     category_counts = defaultdict(int)
 
-    os.makedirs(RENAMED_FINAL_DIR, exist_ok=True)
+    RENAMED_FINAL_DIR.mkdir(parents=True, exist_ok=True)
 
     for cat in categories_sorted:
         cat_id = category_id_map[cat]
         cat_items = category_to_items[cat]
         for item in cat_items:
-            ext = os.path.splitext(item["file_path"])[-1] or ".tif"
+            ext = Path(item["file_path"]).suffix or ".tif"
             new_filename = f"{IMAGE_PREFIX}{str(image_counter).zfill(img_digits)}{ext}"
-            new_filepath = os.path.join(RENAMED_FINAL_DIR, new_filename)
+            new_filepath = RENAMED_FINAL_DIR / new_filename
 
             # Copy and rename once
-            copy_file(item["file_path"], new_filepath)
+            copy_file(Path(item["file_path"]), new_filepath)
 
             # Record mappings (增加了原始路径)
             mapping_json.append({
                 "new_filename": new_filename,
                 "original_path": item["file_path"],
-                "new_path": new_filepath,
+                "new_path": str(new_filepath),
                 "category": cat_id
             })
 
             item_updated = dict(item)
-            item_updated["file_path"] = new_filepath
+            item_updated["file_path"] = str(new_filepath)
             updated_items.append(item_updated)
 
             image_counter += 1
