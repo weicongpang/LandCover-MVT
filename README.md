@@ -31,10 +31,9 @@ pip install .
 
 ### Step 1: Prepare Dataset
 
-Please first download the AID dataset from https://huggingface.co/datasets/licheng03/AID/tree/main, use the following command to download the dataset to your local folder:
-```wget https://huggingface.co/datasets/licheng03/AID/resolve/main/AID_dataset.zip```
-Then please download dataset from https://huggingface.co/datasets/CSYYY/image, and **create dataset folder under the repo root folder**. 
-Please use ```wget https://huggingface.co/datasets/CSYYY/image/resolve/main/flat_out_without_air.zip.tar.gz```
+Please first download the AID dataset from https://captain-whu.github.io/AID/
+Then please download dataset from https://huggingface.co/datasets/image, and **create dataset folder under the repo root folder**. 
+Please use ```wget https://huggingface.co/datasets/image/resolve/main/flat_out_without_air.zip.tar.gz```
 Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
 
 We will do two stages fine-tuning.
