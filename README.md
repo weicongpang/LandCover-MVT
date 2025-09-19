@@ -1,7 +1,12 @@
 # Openset Remote Sensing Image Tagging 
 
-This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.
-
+This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.  
+We have released the code of the MLLMs part.
+We have released the environment requirements of the project.
+We have released the raw data of the project.
+We will release the checkpoint model of the Segmentation and the MLLMs Part.
+We will release the code of the segmentation part.
+We will release the processed dataset.
 ---
 
 ## Requirements
@@ -35,6 +40,13 @@ Please first download the AID dataset from https://captain-whu.github.io/AID/
 Then please download dataset from https://huggingface.co/datasets/image, and **create dataset folder under the repo root folder**. 
 Please use ```wget https://huggingface.co/datasets/image/resolve/main/flat_out_without_air.zip.tar.gz```
 Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
+
+The NWPU-RESISC45 dataset can be accessed from https://www.kaggle.com/datasets/aqibrehmanpirzada/nwpuresisc45.
+The PatternNet dataset can be accessed from https://huggingface.co/datasets/blanchon/PatternNet.
+The UC Merced Land-Use datase dataset can be accessed from http://weegee.vision.ucmerced.edu/datasets/landuse.html.
+The RSICB dataset can be accessed from https://meta-album.github.io/datasets/RSICB.html.
+The Openearthmap dataset can be accessed from https://open-earth-map.org/overview_oem.html.
+The LoveDA dataset can be accessed from https://www.kaggle.com/datasets/mohammedjaveed/loveda-dataset.
 
 We will do two stages fine-tuning.
 For the first stage fine-tuning, please use the AID Dataset. 
