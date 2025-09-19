@@ -1,12 +1,6 @@
 # Openset Remote Sensing Image Tagging 
 
-This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.  
-We have released the code of the MLLMs part.
-We have released the environment requirements of the project.
-We have released the raw data of the project.
-We will release the checkpoint model of the Segmentation and the MLLMs Part.
-We will release the code of the segmentation part.
-We will release the processed dataset.
+This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.
 ---
 
 ## Requirements
@@ -33,6 +27,12 @@ pip install .
 ---
 
 ## Quick Start
+We have released the code of the MLLMs part.  
+We have released the environment requirements of the project.  
+We have released the raw data of the project.  
+We will release the checkpoint model of the Segmentation and the MLLMs Part.  
+We will release the code of the segmentation part.  
+We will release the processed dataset.  
 
 ### Step 1: Prepare Dataset
 
