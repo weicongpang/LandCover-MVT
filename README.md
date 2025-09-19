@@ -41,12 +41,12 @@ Then please download dataset from https://huggingface.co/datasets/image, and **c
 Please use ```wget https://huggingface.co/datasets/image/resolve/main/flat_out_without_air.zip.tar.gz```
 Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
 
-The NWPU-RESISC45 dataset can be accessed from https://www.kaggle.com/datasets/aqibrehmanpirzada/nwpuresisc45.
+The NWPU-RESISC45 dataset can be accessed from https://www.tensorflow.org/datasets/catalog/resisc45.
 The PatternNet dataset can be accessed from https://huggingface.co/datasets/blanchon/PatternNet.
 The UC Merced Land-Use datase dataset can be accessed from http://weegee.vision.ucmerced.edu/datasets/landuse.html.
 The RSICB dataset can be accessed from https://meta-album.github.io/datasets/RSICB.html.
 The Openearthmap dataset can be accessed from https://open-earth-map.org/overview_oem.html.
-The LoveDA dataset can be accessed from https://www.kaggle.com/datasets/mohammedjaveed/loveda-dataset.
+The LoveDA dataset can be accessed from https://zenodo.org/records/5706578.
 
 We will do two stages fine-tuning.
 For the first stage fine-tuning, please use the AID Dataset. 
