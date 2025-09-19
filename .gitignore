@@ -7,3 +7,4 @@ dataset_processed/output_json/output_images_annotations.json
 *.pyc
 __pycache__/
 .DS_Storedataset_processed/output_json/*.json
+dataset_processed/output_json/renamed_output_images_annotation.json

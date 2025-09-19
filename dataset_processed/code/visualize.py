@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 # ======== 可按需修改 ========
-INPUT_JSON = "/root/openset/dataset_processed/final_annotations.json"
+INPUT_JSON = "/root/openset/dataset_processed/sample_json/final_annotations.json"
 OUTPUT_DIR = "/root/openset/dataset_processed/visualize_folder"
 ALPHA = 0.55                   # 透明度↑ 更“深”
 DRAW_ID = True                 # 是否在实例中心写 id
