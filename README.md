@@ -36,9 +36,7 @@ We will release the processed dataset.
 
 ### Step 1: Prepare Dataset
 
-Please first download the AID dataset from https://captain-whu.github.io/AID/
-Then please download dataset from https://huggingface.co/datasets/image, and **create dataset folder under the repo root folder**. 
-Please use ```wget https://huggingface.co/datasets/image/resolve/main/flat_out_without_air.zip.tar.gz```
+Please first download the AID dataset from https://captain-whu.github.io/AID/ and **create dataset folder under the repo root folder**. 
 Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
 
 The NWPU-RESISC45 dataset can be accessed from https://www.tensorflow.org/datasets/catalog/resisc45.
