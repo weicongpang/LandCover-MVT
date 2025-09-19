@@ -15,7 +15,7 @@ CATEGORY_PREFIX = "category"
 IMAGE_PREFIX = "image"
 
 SUFFIX_WHITELIST = {
-    "sand_beach", "city_building", "circular_farmland",
+    "airplane", "sand_beach", "city_building", "circular_farmland",
     "dry_farm", "green_farmland", "rectangular_farmland",
     "sparse_forest", "ground_track_field", "stadium",
     "tennis_court", "tenniscourt", "airport_runway",
@@ -26,10 +26,8 @@ ALIAS_MAP = {
     "groundtrackfield": "ground_track_field",
     "sandbeach": "sand_beach",
     "citybuilding": "city_building",
-    "green_farm_land": "green_farmland",
-    "rectangular_farm_land": "rectangular_farmland",
-    "circular_farm_land": "circular_farmland",
-}
+    "airport_runway": "airport_runway",
+    "circular_farm_land": "circular_farmland"}
 
 def load_json(path: str) -> List[Dict[str, Any]]:
     with open(path, "r", encoding="utf-8") as f:
@@ -47,7 +45,7 @@ def normalize_label(s: str) -> str:
     return s
 
 def cleanup_suffix(s: str) -> str:
-    s = re.sub(r"([_-]?\d+)$", "", s).rstrip("_-. ")
+    s = re.sub(r"([_-]?\d+)$", "", s).rstrip("_-.")
     return s
 
 def parse_category(file_path: str) -> str:
@@ -68,16 +66,12 @@ def copy_file(src: str, dst: str):
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     shutil.copy2(src, dst)
 
-def should_skip(file_path: str) -> bool:
-    return bool(re.search(r"airfield|airplane|airport", file_path, re.IGNORECASE))
-
 def main():
     items = load_json(INPUT_JSON)
     category_to_items = defaultdict(list)
 
+    # Step 1: 分类统计
     for item in items:
-        if should_skip(item["file_path"]):
-            continue
         category = parse_category(item["file_path"])
         category_to_items[category].append(item)
 
@@ -85,7 +79,7 @@ def main():
     category_id_map = {cat: f"{CATEGORY_PREFIX}{str(idx).zfill(4)}"
                        for idx, cat in enumerate(categories_sorted, start=1)}
 
-    total_images = sum(len(v) for v in category_to_items.values())
+    total_images = len(items)
     img_digits = digits(total_images)
 
     mapping_json = []
@@ -103,8 +97,10 @@ def main():
             new_filename = f"{IMAGE_PREFIX}{str(image_counter).zfill(img_digits)}{ext}"
             new_filepath = os.path.join(RENAMED_FINAL_DIR, new_filename)
 
+            # Copy and rename once
             copy_file(item["file_path"], new_filepath)
 
+            # Record mappings (增加了原始路径)
             mapping_json.append({
                 "new_filename": new_filename,
                 "original_path": item["file_path"],
@@ -119,6 +115,7 @@ def main():
             image_counter += 1
             category_counts[cat_id] += 1
 
+    # Save mapping and updated annotations
     save_json(mapping_json, IMAGE_CATEGORY_MAPPING_JSON)
     save_json(updated_items, OUTPUT_JSON)
 

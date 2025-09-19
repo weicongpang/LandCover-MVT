@@ -1,4 +1,4 @@
-# Open-set Remote Sensing Image Tagging using Qwen-VL
+# Openset Remote Sensing Image Tagging 
 
 This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.
 
@@ -31,6 +31,17 @@ pip install .
 
 ### Step 1: Prepare Dataset
 
+Please first download the AID dataset from https://huggingface.co/datasets/licheng03/AID/tree/main, use the following command to download the dataset to your local folder:
+```wget https://huggingface.co/datasets/licheng03/AID/resolve/main/AID_dataset.zip```
+Then please download dataset from https://huggingface.co/datasets/CSYYY/image, and **create dataset folder under the repo root folder**. 
+Please use ```wget https://huggingface.co/datasets/CSYYY/image/resolve/main/flat_out_without_air.zip.tar.gz```
+Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
+
+We will do two stages fine-tuning.
+For the first stage fine-tuning, please use the AID Dataset. 
+For the second stage fine-tuning, please use our own Dataset.
+
+The followings are for the second stage fine-tuning: 
 Navigate to dataset processing scripts and execute them one by one (first combine.py, then rename.py, finally process_json.py):
 
 ```bash
