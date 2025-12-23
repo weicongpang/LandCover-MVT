@@ -30,9 +30,9 @@ pip install .
 We have released the code of the MLLMs part.  
 We have released the environment requirements of the project.  
 We have released the raw data of the project.  
-We will release the checkpoint model of the Segmentation and the MLLMs Part.  
-We will release the code of the segmentation part.  
-We will release all of the processed and raw dataset.  
+We will release the checkpoint model of the Segmentation and the MLLMs Part soon.  
+We will release the code of the segmentation part soon.  
+We will release all of the processed and raw dataset soon.  
 
 ### Step 1: Prepare Dataset
 
@@ -46,9 +46,9 @@ The RSICB dataset can be accessed from https://meta-album.github.io/datasets/RSI
 The Openearthmap dataset can be accessed from https://open-earth-map.org/overview_oem.html.
 The LoveDA dataset can be accessed from https://zenodo.org/records/5706578.
 
-We will do two stages fine-tuning.
-For the first stage fine-tuning, please use the AID Dataset. 
-For the second stage fine-tuning, please use our own Dataset.
+You need do two steps fine-tuning.
+For the first step fine-tuning, please use the AID Dataset. 
+For the second step fine-tuning, please use our own Dataset.
 
 The followings are for the second stage fine-tuning: 
 Navigate to dataset processing scripts and execute them one by one (first combine.py, then rename.py, finally process_json.py):
