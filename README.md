@@ -32,7 +32,7 @@ We have released the environment requirements of the project.
 We have released the raw data of the project.  
 We will release the checkpoint model of the Segmentation and the MLLMs Part.  
 We will release the code of the segmentation part.  
-We will release the processed dataset.  
+We will release all of the processed and raw dataset.  
 
 ### Step 1: Prepare Dataset
 
