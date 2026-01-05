@@ -1,7 +1,6 @@
-# LandCover-MVT (MASK-GROUNDED VISION-LANGUAGE MODELS FOR TAXONOMY-ALIGNED LAND-COVER TAGGING)
+# LandCover-MVT (Mask-Grounded Vision-Language Models for Taxonomy-Aligned Land-Cover Tagging)
 
 This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.
-
 ---
 
 ## Requirements
@@ -10,7 +9,7 @@ This repository provides a simple pipeline to perform open-set image tagging on 
 
 ```bash
 # Clone the repository
-git clone https://github.com/weicongpang/openset_remotesensing_tagging.git
+git clone https://github.com/XXX/openset_remotesensing_tagging.git
 cd openset
 
 # Create conda environment
@@ -28,18 +27,28 @@ pip install .
 ---
 
 ## Quick Start
+We have released the code of the MLLMs part.  
+We have released the environment requirements of the project.  
+We have released the raw data of the project.  
+We will release the checkpoint model of the Segmentation and the MLLMs Part soon.  
+We will release the code of the segmentation part soon.  
+We will release all of the processed and raw dataset soon.  
 
 ### Step 1: Prepare Dataset
 
-Please first download the AID dataset from https://huggingface.co/datasets/licheng03/AID/tree/main, use the following command to download the dataset to your local folder:
-```wget https://huggingface.co/datasets/licheng03/AID/resolve/main/AID_dataset.zip```
-Then please download dataset from https://huggingface.co/datasets/CSYYY/image, and **create dataset folder under the repo root folder**. 
-Please use ```wget https://huggingface.co/datasets/CSYYY/image/resolve/main/flat_out_without_air.zip.tar.gz```
+Please first download the AID dataset from https://captain-whu.github.io/AID/ and **create dataset folder under the repo root folder**. 
 Inside the dataset folder you should see flat_out folder, root folder, and instance_object_only.json
 
-We will do two stages fine-tuning.
-For the first stage fine-tuning, please use the AID Dataset. 
-For the second stage fine-tuning, please use our own Dataset.
+The NWPU-RESISC45 dataset can be accessed from https://www.tensorflow.org/datasets/catalog/resisc45.
+The PatternNet dataset can be accessed from https://huggingface.co/datasets/blanchon/PatternNet.
+The UC Merced Land-Use datase dataset can be accessed from http://weegee.vision.ucmerced.edu/datasets/landuse.html.
+The RSICB dataset can be accessed from https://meta-album.github.io/datasets/RSICB.html.
+The Openearthmap dataset can be accessed from https://open-earth-map.org/overview_oem.html.
+The LoveDA dataset can be accessed from https://zenodo.org/records/5706578.
+
+You need do two steps fine-tuning.
+For the first step fine-tuning, please use the AID Dataset. 
+For the second step fine-tuning, please use our own Dataset.
 
 The followings are for the second stage fine-tuning: 
 Navigate to dataset processing scripts and execute them one by one (first combine.py, then rename.py, finally process_json.py):
