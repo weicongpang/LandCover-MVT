@@ -1,4 +1,4 @@
-# Openset Remote Sensing Image Tagging 
+# LandCover-MVT (MASK-GROUNDED VISION-LANGUAGE MODELS FOR TAXONOMY-ALIGNED LAND-COVER TAGGING)
 
 This repository provides a simple pipeline to perform open-set image tagging on remote sensing datasets, leveraging the Qwen2.5-VL multimodal language model and other MLLMs.
 
